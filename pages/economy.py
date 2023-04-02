@@ -28,6 +28,9 @@ def openbb_economy():
 
 economy_dfs, file_names = openbb_economy()
 
+if st.button("Refresh Data"):
+    economy_dfs, file_names = openbb_economy()
+
 # output all economy tables with labels above
 for i in range(len(economy_dfs)):
     st.write(f"# {file_names[i]}")
