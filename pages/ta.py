@@ -50,13 +50,13 @@ def remove_existing_file(func):
     return wrapper
 
 @remove_existing_file
-@st.cache_data
+@st.experimental_memod
 def build_bbands_img(data, symbol, window=15, n_std=2, export="bbands.png"):
     return display_bbands(data, symbol, window, n_std, export=export)
 
 
 @remove_existing_file
-@st.cache_data
+@st.experimental_memo
 def build_donchian_img(data, symbol, export="donchian.png"):
     return display_donchian(data, symbol, export=export)
 company_name = symbol.upper()
