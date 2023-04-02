@@ -50,7 +50,7 @@ def remove_existing_file(func):
     return wrapper
 
 @remove_existing_file
-@st.experimental_memod
+@st.experimental_memo
 def build_bbands_img(data, symbol, window=15, n_std=2, export="bbands.png"):
     return display_bbands(data, symbol, window, n_std, export=export)
 
