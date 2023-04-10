@@ -10,12 +10,12 @@ def remove_existing_file(func):
         stream = os.popen('cd ~ && pwd')
         root_dir = stream.read()
         # check for .openbb_terminal/env in root_dir
-        if os.path.exists(os.path.join(root_dir.strip(), ".openbb_terminal", "env")) == False:
-            print("Did not find .openbb_terminal/env")
+        if os.path.exists(os.path.join(root_dir.strip(), ".openbb_terminal", ".env")) == False:
+            print("Did not find .openbb_terminal/.env")
             # create it
             os.mkdir(os.path.join(root_dir.strip(), ".openbb_terminal"))
             # make .env file
-            env_file = open(os.path.join(root_dir.strip(), ".openbb_terminal", "env"), "w")
+            env_file = open(os.path.join(root_dir.strip(), ".openbb_terminal", ".env"), "w")
             
         sample_dir = root_dir.strip()
         # remove /home/codespace/OpenBBUserData/exports/bbands.png already
