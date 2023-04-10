@@ -65,6 +65,16 @@ st.write(data)
 st.header(f"Adjusted Close Price\n {company_name}")
 st.line_chart(data["Close"])
 
+
+donchian_img = build_donchian_img(data, symbol, ran_donchian_name)
+# plot ta using open bb sdk in streamlit
+st.header(f"Donchian")
+
+
+if donchian_img:
+    print(donchian_img)
+    st.image(donchian_img, caption='Donchian Openbb chart') 
+
 # get ta graph
 bbands_img = build_bbands_img(data, symbol, 15, 2, ran_bbands_name)
 # plot ta using open bb sdk in streamlit
@@ -73,12 +83,6 @@ st.header(f"Bollinger Bands")
 # if bbands.png exists, display it
 
 if bbands_img:
-    image = PIL.image(io.BytesIO(bytes(bbands_img, "utf-8")))
+    print(bbands_img)
     st.image(bbands_img, caption='Bollinger bands chart')
 
-donchian_img = build_donchian_img(data, symbol, ran_donchian_name)
-# plot ta using open bb sdk in streamlit
-st.header(f"Donchian")
-
-if donchian_img:
-    st.image(donchian_img, caption='Donchian Openbb chart') 
