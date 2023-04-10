@@ -4,6 +4,7 @@ import pandas as pd
 import requests
 import random
 import os
+from PIL import Image
 from pages.utils.util import remove_existing_file
 from openbb_terminal.stocks.stocks_helper import load
 from openbb_terminal.common.technical_analysis.volatility_view import display_bbands, display_donchian
