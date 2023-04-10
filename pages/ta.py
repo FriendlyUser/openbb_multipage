@@ -2,6 +2,7 @@ import streamlit as st
 import datetime
 import pandas as pd
 import requests
+import random
 from pages.utils.util import remove_existing_file
 from openbb_terminal.stocks.stocks_helper import load
 from openbb_terminal.common.technical_analysis.volatility_view import display_bbands, display_donchian
@@ -25,6 +26,10 @@ def user_input_features():
 symbol, start, end = user_input_features()
 
 
+# append random int to file name to avoid caching
+rand_int = str(random.randint(1, 500000))
+ran_bbands_name = f"bbands-{rand_int}.png"
+ran_donchian_name = f"donchian-{rand_int}.png"
 
 @remove_existing_file
 @st.experimental_memo
@@ -49,7 +54,7 @@ st.header(f"Adjusted Close Price\n {company_name}")
 st.line_chart(data["Close"])
 
 # get ta graph
-bbands_img = build_bbands_img(data, symbol, 15, 2, "bbands.png")
+bbands_img = build_bbands_img(data, symbol, 15, 2, ran_bbands_name)
 # plot ta using open bb sdk in streamlit
 st.header(f"Bollinger Bands")
 # 
@@ -58,7 +63,7 @@ st.header(f"Bollinger Bands")
 if bbands_img:
     st.image(bbands_img, caption='Bollinger bands chart')
 
-donchian_img = build_donchian_img(data, symbol, "donchian.png")
+donchian_img = build_donchian_img(data, symbol, ran_donchian_name)
 # plot ta using open bb sdk in streamlit
 st.header(f"Donchian")
 
