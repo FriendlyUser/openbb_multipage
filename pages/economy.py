@@ -19,7 +19,7 @@ def openbb_economy():
     file_names.append("global_currencies")
     economy_dfs.append(market_overview())
     file_names.append("market_overview")
-    economy_dfs.append(get_debt())
+    economy_dfs.append(get_debt(["united_states", "canada"]))
     file_names.append("debt")
     balance = get_balance(
         countries=["united_states", "canada"],
