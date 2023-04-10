@@ -1,3 +1,3 @@
-openbb==2.5.1
+git+https://github.com/OpenBB-finance/OpenBBTerminal.git
 streamlit
 yfinance
