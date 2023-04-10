@@ -2,11 +2,10 @@ import os
 import sys
 from PIL import Image
 from io import StringIO
-
 def remove_existing_file(func):
     def wrapper(*args, **kwargs):
         old_stdin = sys.stdin
-        sys.stdin = StringIO("\n")
+        sys.stdin = StringIO("y")
         stream = os.popen('cd ~ && pwd')
         root_dir = stream.read()
         sample_dir = root_dir.strip()
