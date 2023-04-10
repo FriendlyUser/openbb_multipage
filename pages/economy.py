@@ -1,11 +1,7 @@
 import streamlit as st
 from openbb_terminal.economy.wsj_model import market_overview, us_indices, us_bonds, top_commodities, global_bonds, global_currencies
+from openbb_terminal.economy.oecd_model import get_debt, get_balance
 
-# openbb.economy.overview
-# openbb.economy.indices
-# openbb.economy.usbonds
-# openbb.economy.glbonds
-# openbb.economy.currencies
 def openbb_economy():
     """Open the Blackboard website in the default web browser."""
     economy_dfs = []
@@ -23,6 +19,13 @@ def openbb_economy():
     file_names.append("global_currencies")
     economy_dfs.append(market_overview())
     file_names.append("market_overview")
+    economy_dfs.append(get_debt())
+    file_names.append("debt")
+    balance = get_balance(
+        countries=["united_states", "canada"],
+    )
+    economy_dfs.append(balance)
+    file_names.append("balance")
 
     return economy_dfs, file_names
 
