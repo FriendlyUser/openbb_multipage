@@ -37,4 +37,8 @@ if st.button("Refresh Data"):
 # output all economy tables with labels above
 for i in range(len(economy_dfs)):
     st.write(f"# {file_names[i]}")
+    if file_names[i] == "debt":
+        st.write("General government debt-to-GDP ratio measures the gross debt of the general.")
+    if file_names[i] == "balance":
+        st.write("General government deficit is defined as the balance of income and expenditure of government.")
     st.write(economy_dfs[i])

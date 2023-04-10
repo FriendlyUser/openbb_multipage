@@ -1,5 +1,5 @@
 import streamlit as st
-from openbb_terminal.common import get_news
+from openbb_terminal.common.feedparser_model import get_news
 
 def fetch_news(keyword):
     # This is where you would call a news API or scrape a news website
