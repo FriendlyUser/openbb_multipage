@@ -72,6 +72,7 @@ st.header(f"Bollinger Bands")
 # if bbands.png exists, display it
 
 if bbands_img:
+    image = PIL.image(io.BytesIO(bytes(bbands_img, "utf-8")))
     st.image(bbands_img, caption='Bollinger bands chart')
 
 donchian_img = build_donchian_img(data, symbol, ran_donchian_name)

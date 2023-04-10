@@ -7,7 +7,8 @@ def remove_existing_file(func):
     def wrapper(*args, **kwargs):
         old_stdin = sys.stdin
         sys.stdin = StringIO("y")
-            
+        stream = os.popen('cd ~ && pwd')
+        root_dir = stream.read()
         sample_dir = root_dir.strip()
         # remove /home/codespace/OpenBBUserData/exports/bbands.png already
         # get last arg as export
