@@ -6,7 +6,7 @@ from io import StringIO
 def remove_existing_file(func):
     def wrapper(*args, **kwargs):
         old_stdin = sys.stdin
-        sys.stdin = StringIO("y")
+        sys.stdin = StringIO("\n")
         stream = os.popen('cd ~ && pwd')
         root_dir = stream.read()
         sample_dir = root_dir.strip()
