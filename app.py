@@ -1,6 +1,7 @@
 import streamlit as st
 import os
-from openbb_terminal import keys
+import dotenv
+from openbb_terminal.core.config.paths import SETTINGS_ENV_FILE
 
 stream = os.popen('cd ~ && pwd')
 root_dir = stream.read()
@@ -11,6 +12,8 @@ if os.path.exists(os.path.join(root_dir.strip(), ".openbb_terminal", ".env")) ==
     os.mkdir(os.path.join(root_dir.strip(), ".openbb_terminal"))
     # make .env file
     env_file = open(os.path.join(root_dir.strip(), ".openbb_terminal", ".env"), "w")
+    # dotenv.set_key(SETTINGS_ENV_FILE, "PLOT_ENABLE_PYWRY", "0")
+    dotenv.set_key("OPENBB_PLOT_ENABLE_PYWRY", 0)
 
 st.write("""
 # Technical Analysis Web Application
