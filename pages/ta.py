@@ -5,9 +5,9 @@ import requests
 import random
 import os
 from PIL import Image
+from openbb_terminal.sdk import openbb
 from pages.utils.util import remove_existing_file
-from openbb_terminal.stocks.stocks_helper import load
-from openbb_terminal.common.technical_analysis.volatility_view import display_bbands, display_donchian
+# from openbb_terminal.common.technical_analysis.volatility_view import display_bbands, display_donchian
 
 st.write("""
 # Technical Analysis Web Application
@@ -33,23 +33,23 @@ rand_int = str(random.randint(1, 500000))
 ran_bbands_name = f"bbands-{rand_int}.png"
 ran_donchian_name = f"donchian-{rand_int}.png"
 
-@remove_existing_file
+# @remove_existing_file
 @st.experimental_memo
 def build_bbands_img(data, symbol, window=15, n_std=2, export="bbands.png"):
-    return display_bbands(data, symbol, window, n_std, export=export)
+    return openbb.ta.bbands_chart(data, symbol, window, n_std, export=export)
 
 
-@remove_existing_file
+# @remove_existing_file
 @st.experimental_memo
 def build_donchian_img(data, symbol, export="donchian.png"):
-    return display_donchian(data, symbol, export=export)
+    return openbb.ta.donchian_chart(data, symbol, export=export)
 company_name = symbol.upper()
 
 start = pd.to_datetime(start)
 end = pd.to_datetime(end)
 
 # Read data 
-data = load(symbol,start, 1440, end)
+data = openbb.stocks.load(symbol,start, 1440, end)
 st.write(data)
 # Adjusted Close Price
 st.header(f"Adjusted Close Price\n {company_name}")
@@ -63,7 +63,7 @@ st.header(f"Donchian")
 
 if donchian_img:
     print(donchian_img)
-    st.image(donchian_img, caption='Donchian Openbb chart') 
+    # st.image(donchian_img, caption='Donchian Openbb chart') 
 
 # get ta graph
 bbands_img = build_bbands_img(data, symbol, 15, 2, ran_bbands_name)
@@ -74,5 +74,4 @@ st.header(f"Bollinger Bands")
 
 if bbands_img:
     print(bbands_img)
-    st.image(bbands_img, caption='Bollinger bands chart')
-
+    # st.image(bbands_img, caption='Bollinger bands chart')
