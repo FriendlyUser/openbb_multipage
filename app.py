@@ -1,5 +1,6 @@
 import streamlit as st
 import os
+from openbb_terminal import keys
 
 stream = os.popen('cd ~ && pwd')
 root_dir = stream.read()
