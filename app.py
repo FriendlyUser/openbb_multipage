@@ -13,7 +13,7 @@ if os.path.exists(os.path.join(root_dir.strip(), ".openbb_terminal", ".env")) ==
     # make .env file
     env_file = open(os.path.join(root_dir.strip(), ".openbb_terminal", ".env"), "w")
     # dotenv.set_key(SETTINGS_ENV_FILE, "PLOT_ENABLE_PYWRY", "0")
-    dotenv.set_key("OPENBB_PLOT_ENABLE_PYWRY", 0)
+    dotenv.set_key(SETTINGS_ENV_FILE,"OPENBB_PLOT_ENABLE_PYWRY", 0)
 
 st.write("""
 # Technical Analysis Web Application
